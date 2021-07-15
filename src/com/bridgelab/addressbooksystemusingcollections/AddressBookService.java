@@ -37,8 +37,11 @@ public class AddressBookService
      */
     public void addNewContact()
     {
+        System.out.print("Enter how many contacts you want to store at a time : ");
+        int enterCount = scanner.nextInt();
+        for (int i = 0; i < enterCount; i++)
+        {
             PersonDetails contactDetails = new PersonDetails();
-
             System.out.print("Enter First Name : ");
             contactDetails.setFirstName(scanner.next());
 
@@ -65,6 +68,7 @@ public class AddressBookService
 
             contactList.add(contactDetails);
             System.out.println("\nContact added successfully.\n");
+        }
     }
 
     /**
