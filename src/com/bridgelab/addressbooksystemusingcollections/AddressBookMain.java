@@ -35,20 +35,28 @@ public class AddressBookMain
         boolean isExit = false;
         while (!isExit)
         {
-            System.out.print("Enter Number As Per Your Choice:\n1.Add-New Contacts:\n2.Display-All Records:\n3.Edit Contact:\n4.Exit\n");
+            System.out.print("Enter Number As Per Your Choice:\n1.Add-New Contacts:\n2.Display-All Records:\n3.Edit Contact:" +
+                    "\n4.Delete Contact\n5.Exit:\n");
             int userInput = scanner.nextInt();
             switch (userInput)
             {
                 case 1:
+                        //add new contact.
                         addressBookService.addNewContact();
                         break;
                 case 2:
+                        //display all contact.
                         addressBookService.displayContacts();
                         break;
                 case 3:
+                        //edit existing contact.
                         addressBookService.editFullContact();
                         break;
                 case 4:
+                        //delete existing contact.
+                        addressBookService.deleteContact();
+                        break;
+                case 5:
                         //Exit from program.
                         isExit = true;
                         break;
