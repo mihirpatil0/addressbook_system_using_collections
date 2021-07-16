@@ -46,7 +46,8 @@ public class AddressBookService
         {
             PersonDetails contactDetails = new PersonDetails();
             System.out.print("Enter First Name : ");
-            contactDetails.setFirstName(scanner.next());
+            String firstName = scanner.next();
+            contactDetails.setFirstName(firstName);
 
             System.out.print("Enter Last Name : ");
             contactDetails.setLastName(scanner.next());
@@ -74,12 +75,28 @@ public class AddressBookService
             if(addressBook.containsKey(bookName))
             {
                 ArrayList<PersonDetails> contactList = addressBook.get(bookName);
+                for (int j = 0; j < contactList.size(); j++)
+                {
+                    if(contactList.get(j).getFirstName() == firstName)
+                    {
+                        System.out.println("Sorry can not allow duplicate contact :");
+                        addNewContact();
+                    }
+                }
                 contactList.add(contactDetails);
                 addressBook.put(bookName,contactList);
                 System.out.println("New Contact Added Successfully");
             }
             else
             {
+                for (int k = 0; k < contactList.size(); k++)
+                {
+                    if(contactList.get(k).getFirstName() == firstName)
+                    {
+                        System.out.println("Sorry can not allow duplicate contact :");
+                        addNewContact();
+                    }
+                }
                 contactList.add(contactDetails);
                 addressBook.put(bookName,contactList);
                 System.out.println("New Address-Book created and added Contact Added Successfully");
