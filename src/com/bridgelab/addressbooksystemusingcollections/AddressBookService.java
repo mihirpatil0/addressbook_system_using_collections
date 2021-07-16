@@ -290,6 +290,30 @@ public class AddressBookService
     }
 
     /**
+     * Name : getNumberOfContacts
+     *
+     * Description : Printing total count of contacts present in respective address book.
+     *
+     * Modification : First commit 14-July-2021
+     */
+    public void getNumberOfContacts()
+    {
+        System.out.print("Enter City Name Or State Name To Get The Count Of Contacts : ");
+        String countContacts = scanner.next();
+        int totalCount = 0;
+        for (int i = 0; i < contactList.size(); i++)
+        {
+            if (contactList.get(i).getCity().equals(countContacts) || contactList.get(i).getState().equals(countContacts))
+            {
+                PersonDetails personDetails = contactList.get(i);
+                System.out.println(personDetails);
+                totalCount ++;
+            }
+        }
+        System.out.println("\nTotal number of contacts present in " + countContacts + " is : " + totalCount);
+    }
+
+    /**
      * Name : displayContacts
      *
      * Description : Displaying all the contact to user.
