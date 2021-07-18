@@ -36,7 +36,7 @@ public class AddressBookService
      * Algorithm : In this method accepting all necessary contact details from user,
      * and adding those all details to store in AddressBook as a new contact.
      *
-     * Modification : First commit 14-July-2021.
+     * Modification : Final commit 16-July-2021.
      */
     public void addNewContact()
     {
@@ -107,7 +107,7 @@ public class AddressBookService
      * asking user to choose which field from contact you want to edit.
      * accordingly user will enter new value that is to be set to respective field of contact.
      *
-     * Modification : First Commit 14-July-2021
+     * Modification : Final Commit 16-July-2021
      */
     public void editFullContact()
     {
@@ -270,21 +270,14 @@ public class AddressBookService
      *
      * Algorithm : Printing Person contact who belongs to given city or state.
      *
-     * Modification : First commit 14-July-2021
+     * Modification : Final commit 16-July-2021
      */
     public void searchPersonInACityOrState()
     {
         System.out.print("Enter City Name Or State Name To Search Contact : ");
         String searchCityState = scanner.next();
         System.out.println("\nFollowing are the persons who belongs to : " + searchCityState);
-        for (int i = 0; i < contactList.size(); i++)
-        {
-            if (contactList.get(i).getCity().equals(searchCityState) || contactList.get(i).getState().equals(searchCityState))
-            {
-                PersonDetails personDetails = contactList.get(i);
-                System.out.println(personDetails.getFirstName());
-            }
-        }
+        contactList.stream().filter(details -> details.getCity().equals(searchCityState) || details.getState().equals(searchCityState)).map(PersonDetails::getFirstName).forEach(System.out::println);
     }
 
     /**
