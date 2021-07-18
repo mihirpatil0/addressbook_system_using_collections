@@ -35,8 +35,15 @@ public class AddressBookMain
         boolean isExit = false;
         while (!isExit)
         {
-            System.out.print("Enter Number As Per Your Choice:\n1.Add-New Contacts:\n2.Display-All Records:\n3.Edit Contact:" +
-                    "\n4.Delete Contact:\n5.Search Person In city Or State:\n6.Exit:\n");
+            System.out.print("""
+                    Enter Number As Per Your Choice:
+                    1.Add-New Contacts:
+                    2.Display-All Records:
+                    3.Edit Contact:
+                    4.Delete Contact:
+                    5.Search Person In city Or State:
+                    6.Get Number Of Contacts In City Or State:
+                    7.Exit\n""");
             int userInput = scanner.nextInt();
             switch (userInput)
             {
@@ -60,6 +67,9 @@ public class AddressBookMain
                         //search person by city or state.
                         addressBookService.searchPersonInACityOrState();
                 case 6:
+                        //get number contact in a city or state.
+                        addressBookService.getNumberOfContacts();
+                case 7:
                         //Exit from program.
                         isExit = true;
                         break;
