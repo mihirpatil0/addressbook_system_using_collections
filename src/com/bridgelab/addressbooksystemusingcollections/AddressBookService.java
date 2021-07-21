@@ -1,5 +1,10 @@
 package com.bridgelab.addressbooksystemusingcollections;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -14,6 +19,9 @@ import java.util.stream.Collectors;
 
 public class AddressBookService
 {
+    public enum IOService {CONSOLE_IO, FILE_IO, DB_IO, REST_IO}
+    public static String addressBookFile = "AddressBookFile.txt";
+
     //To scan the input.
     Scanner scanner;
     //To store contacts.
@@ -95,6 +103,48 @@ public class AddressBookService
                 addressBook.put(bookName,contactList);
                 System.out.println("New Address-Book created and added Contact Added Successfully");
             }
+        }
+    }
+
+    /**
+     * Name : writeToFile
+     *
+     * Description : writing data to file.
+     *
+     * Modification : First commit 20-July-2021
+     */
+    public void writeToFile()
+    {
+        StringBuffer addressBuffer = new StringBuffer();
+        contactList.forEach(address -> { String addressDataString = address.toString().concat("\n");addressBuffer.append(addressDataString);});
+        try
+        {
+            Files.write(Paths.get(addressBookFile),addressBuffer.toString().getBytes(StandardCharsets.UTF_8));
+            System.out.println("Data successfully written to file.");
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Name : readDataFromFile
+     *
+     * Description : Reading data from file and printing to console.
+     *
+     * Modification : 20-July-2021.
+     */
+    public void readDataFromFile()
+    {
+        try
+        {
+            System.out.println("Reading Data From File :");
+            Files.lines(new File(addressBookFile).toPath()).map(line -> line.trim()).forEach(line -> System.out.println(line));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
         }
     }
 
